@@ -22,25 +22,25 @@ public:
     {
         image.fillRectangleWithColor(x, y, width, height, color);
     }
+};
 
-    int main()
+int main()
+{
+    ImageBMP image(500, 500, Color(ColorEnum::Black));
+
+    //purple rectangle
+    Rectangle purpleRect
+    (50, 50, 200, 150, Color(128, 0, 128));
+
+    purpleRect.draw(image);
+
+    //white diagonal line
+    for (unsigned int i = 0; i < 500; ++i)
     {
-        ImageBMP image(500, 500, Color(ColorEnum::Black));
-        
-        //purple rectangle
-        Rectangle purpleRect
-        (50, 50, 200, 150, Color(128, 0, 128));
-
-        purpleRect.draw(image);
-
-       //white diagonal line
-        for (unsigned int i = 0; i < 500; ++i)
-        {
-            image.setPixelToColor_withThickness( i, i, Color(ColorEnum::White), 3);
-        }
-
-        image.writeImageFile("output.bmp");
-
-        return 0;
+        image.setPixelToColor_withThickness(i, i, Color(ColorEnum::White), 3);
     }
+
+    image.writeImageFile("output.bmp");
+
+    return 0;
 };
